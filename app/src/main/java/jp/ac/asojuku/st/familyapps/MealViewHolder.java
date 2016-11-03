@@ -15,7 +15,7 @@ public class MealViewHolder extends RecyclerView.ViewHolder{
     public MealViewHolder(View v){
         super(v);
         this.base = v;
-        this.textViewMeal = (TextView) v.findViewById(R.id.comment);
+        this.textViewMeal = (TextView) v.findViewById(R.id.meal);
     }
 
 }

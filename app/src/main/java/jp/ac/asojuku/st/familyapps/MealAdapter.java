@@ -38,7 +38,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealViewHolder> {
     @Override
     public void onBindViewHolder(final MealViewHolder holder,final int listPosition){
 
-
+        holder.textViewMeal.setText(rouletteDataSet.get(listPosition).getMeal());
         holder.base.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -46,7 +46,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealViewHolder> {
                 Uri uri = Uri.parse("mailto:");
                 Intent intent = new Intent(Intent.ACTION_SENDTO,uri);
                 intent.putExtra(Intent.EXTRA_SUBJECT,"今日のメイン料理");
-                intent.putExtra(Intent.EXTRA_TEXT,rouletteDataSet.get(listPosition).getComment());
+                intent.putExtra(Intent.EXTRA_TEXT,"今日のメインは『" + rouletteDataSet.get(listPosition).getMeal() + "』です。");
                 activity.startActivity(intent);
             }
         });
