@@ -46,7 +46,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealViewHolder> {
                 Uri uri = Uri.parse("mailto:");
                 Intent intent = new Intent(Intent.ACTION_SENDTO,uri);
                 intent.putExtra(Intent.EXTRA_SUBJECT,"今日のメイン料理");
-                intent.putExtra(Intent.EXTRA_TEXT,"今日のメインは" + rouletteDataSet.get(listPosition).getComment() + "です。");
+                intent.putExtra(Intent.EXTRA_TEXT,rouletteDataSet.get(listPosition).getComment());
                 activity.startActivity(intent);
             }
         });
