@@ -4,15 +4,22 @@ package jp.ac.asojuku.st.familyapps;
  * Created by momosakishigetada on 2016/11/02.
  */
 public class MealData {
-    private String meal;
+    private String comment;
 
-    public MealData(String meal){
+    public MealData(String comment){
 
-        this.meal = meal;
+        this.comment = comment;
     }
 
-    public String getMeal(){
-        return meal;
+    public String getComment(){
+
+        return comment;
     }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+
+    }
+
 
 }
