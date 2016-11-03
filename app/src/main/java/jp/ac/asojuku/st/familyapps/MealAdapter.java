@@ -2,7 +2,7 @@ package jp.ac.asojuku.st.familyapps;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.sent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,17 +10,17 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import jp.ac.asojuku.st.familyapps.MealData;
-import jp.ac.asojuku.st.familyapps.MealViewHolder;
+
 
 /**
  * Created by momosakishigetada on 2016/11/02.
  */
 public class MealAdapter extends RecyclerView.Adapter<MealViewHolder> {
     private ArrayList<MealData> rouletteDataSet;
+    private Activity activity;
 
-    public MealAdapter(ArrayList<MealData> roulette){
-
+    public MealAdapter(ArrayList<MealData> roulette , Activity activity){
+        this.activity = activity;
         this.rouletteDataSet = roulette;
     }
     //新しいViewを作成する
@@ -38,23 +38,22 @@ public class MealAdapter extends RecyclerView.Adapter<MealViewHolder> {
     @Override
     public void onBindViewHolder(final MealViewHolder holder,final int listPosition){
 
-        holder.textViewMeal.setText(rouletteDataSet.get(listPosition).getMeal());
+
         holder.base.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 //vはcardView
-                sent sent = sent.parse("mailto:");
-                Intent intent = new Intent(Intent.ACTION_SENDTO,sent);
+                Uri uri = Uri.parse("mailto:");
+                Intent intent = new Intent(Intent.ACTION_SENDTO,uri);
                 intent.putExtra(Intent.EXTRA_SUBJECT,"今日のメイン料理");
-                intent.putExtra(Intent.EXTRA_TEXT,"今日のメインは" + rouletteDataSet.get(listPosition) + "です。");
-                startActivity(intent);
-
-
+                intent.putExtra(Intent.EXTRA_TEXT,"今日のメインは" + rouletteDataSet.get(listPosition).getComment() + "です。");
+                activity.startActivity(intent);
             }
         });
     }
-    @Override
+
     public int getItemCount(){
+
         return rouletteDataSet.size();
     }
 

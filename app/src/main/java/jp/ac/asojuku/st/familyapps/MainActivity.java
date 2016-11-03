@@ -7,6 +7,9 @@ import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+
+
+
 /**
  * Created by momosakishigetada on 2016/11/02.
  */
@@ -31,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
             ));
         }
 
-        RecyclerView.Adapter adapter = new MealAdapter(meal);
+        RecyclerView.Adapter adapter = new MealAdapter(meal,this);
         recyclerView.setAdapter(adapter);
-        recyclerView.smoothScrollToPosition(meal.size() - 1);//最後までスクロール
+        recyclerView.smoothScrollToPosition(meal.size() -1);//最後までスクロール
 
     }
 }
